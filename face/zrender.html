@@ -1,0 +1,43 @@
+<!--
+Created by ChenCen on 2017/12/20
+-->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="../zrender/dist/zrender.js"></script>
+    <script type="text/javascript" src="./js/demo.zrender.js"></script>
+</head>
+<body>
+<div class="example-container" style="width:800px;height:400px"></div>
+<script>
+    str='[{"段":"794-810","value":5},' +
+        '{"段":"815-823","value":5.6},' +
+        '{"段":"840-849","value":3},' +
+        '{"段":"855-860","value":7},' +
+        '{"段":"877-893","value":2.6},' +
+        '{"段":"920-945","value":8.3},' +
+        '{"段":"955-962","value":4.5},' +
+        '{"段":"970-977","value":6},' +
+        '{"段":"980-988","value":7.1},' +
+        '{"段":"993-1007","value":3.3},' +
+        '{"段":"1008-1011","value":8.1},' +
+        '{"段":"1020-1035","value":6.3}]';
+    jsonData=JSON.parse(str);
+ 
+    $('.example-container').dirCard
+    (
+        {
+            data:jsonData,
+            wellSec:'段',
+            showCol:'value',
+            barColor:['rgba(114, 172, 209, 1)','rgba(114, 172, 209, 0.5)'],
+            backgroundColor:'#ccc'
+        }
+    );
+</script>
+</body>
+</html>

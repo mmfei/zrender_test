@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/JackWeiSlider201808130834/css/jackwei.slider.css">
+		<script type="text/javascript" src="/jquery.js"></script>
+		<script type="text/javascript" src="/zrender/dist/zrender.js"></script>
+	</head>
+<body>
+    <div id="main" style="width:1000px;height:600px;"></div>
+
+	<script>
+		start = 1;
+
+
+		var zr = zrender.init(document.getElementById('main'));
+
+	    var tenDeg = Math.PI / 2;//角度/360*2PI 
+		var img = new zrender.Image({
+	        position: [20, 20],
+	        rotation: [tenDeg, 5, zr.height-55],
+	        scale: [1, 1],
+			// rotation:[], 
+			style:{
+	            x: 0,
+	            y: 0,
+	            width: 200,
+	            height: 200,
+				image:"http://qn.ciyocon.com/upload/FuXz30Z3SjYKWAqNSpB-HF0bvmLF?imageView2/1/w/200/h/200"
+			},
+			// clickable:true,
+			// olclick:function(params){
+			// 	console.log(params)
+			// },
+            draggable: true
+		});
+		// console.log(img)
+		zr.add(img);
+
+	</script>
+
+
+	<div id="sliderParent" style="padding: 50px;background-color: gray;display: inline-block;">
+
+	<div style="width:400px;">
+	        <div class="jws-outside-bar">
+	            <div class="jws-inside-bar" style="background-color: deepskyblue; width: 240px;"></div>
+	            <!-- <img class="jws-handle" src="http://www.jq22.com/demo/JackWeiSlider201808130834/img/slider_handle.png" style="margin-left: 228px;"> -->
+	            <div class="jws-text" style="margin-left: 200px;">60%</div>
+	        </div>
+	    </div>
+	</div>
+	<script src="./js/jackwei.slider.js"></script>
+	    <script type="text/javascript">
+	    var option = {
+	        color: 'deepskyblue',
+	        width: '400px',
+	        progress: 1,
+	        handleSrc: 'http://qn.ciyocon.com/upload/FuXz30Z3SjYKWAqNSpB-HF0bvmLF?imageView2/1/w/200/h/200',
+	        isCustomText: false
+	    };
+	    $('#sliderParent')
+	        .jackWeiSlider(option)
+	        // .setText('2018-4-5 02:39:00')
+	        .setProgress(start)
+	        .setOnStartDragCallback(function () {
+	            console.log('start');
+	        })
+	        .setOnDragCallback(function (p) {
+	            console.log(p);
+	            img.attr({
+	            	style:{
+	            		width:200 * p,
+	            		height:200* p,
+	            		transformText : false,
+            			text: 'koala',
+	            		textRotation:0.5
+	            	}
+	            });
+
+	        })
+	        .setOnStopDragCallback(function () {
+	            console.log('stop');
+	        });
+
+	    // $('#sliderParent1')
+	    //     .jackWeiSlider(option)
+	    //     // .setText('2018-4-5 02:39:00')
+	    //     .setProgress(start)
+	    //     .setOnStartDragCallback(function () {
+	    //         console.log('start');
+	    //     })
+	    //     .setOnDragCallback(function (p) {
+	    //         console.log(p);
+	    //         img.attr({
+	    //         	style:{
+	    //         		width:200 * p,
+	    //         		height:200* p,
+	    //         	}
+	    //         });
+	    //     })
+	    //     .setOnStopDragCallback(function () {
+	    //         console.log('stop');
+	    //     });
+	</script>
+
+</body>
+</html>
